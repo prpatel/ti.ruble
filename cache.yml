@@ -60,9 +60,15 @@ children:
     path: bundle.rb
     scope: null
   - children: *id001
-    commandName: Update/Insert selected code
+    commandName: Show commands
     customProperties: null
-    displayName: Update/Insert selected code
+    displayName: Show commands
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Command 2
+    customProperties: null
+    displayName: Command 2
     path: bundle.rb
     scope: null
   - children: *id001
@@ -91,7 +97,7 @@ children:
 - !!com.aptana.scripting.model.CommandElement
   async: false
   customProperties: null
-  displayName: Invoke REPL
+  displayName: TEST REPL
   input: [selection, word]
   inputPath: null
   keyBindingMap:
@@ -101,6 +107,32 @@ children:
   path: commands/commands.rb
   runType: current_thread
   scope: source
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Show commands
+  input: []
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: undefined
+  path: commands/commands.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Invoke REPL
+  input: []
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: undefined
+  path: commands/commands.rb
+  runType: current_thread
+  scope: null
   workingDirectoryType: UNDEFINED
 copyright: '(c) Copyright 2011 mypatelspace.com
 

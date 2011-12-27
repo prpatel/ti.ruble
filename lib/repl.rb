@@ -36,7 +36,7 @@ class Repl
     session_id = @remote_connection.cmd('/session_id').split(/\s+/)[1]
 
     puts "got session_id: #{session_id}"
-    src = "replButton.backgroundColor = '#{color}';"
+    src = "win1.backgroundColor = '#{color}';"
     message_request = {:'session-id' => session_id, :id => 1, :type => 'eval_src', :src => src}
     # titanium.cmd(Base64.encode64(message_request.to_json)) do |c|
     # size += c.size
@@ -47,4 +47,22 @@ class Repl
     # puts "received this raw data back: #{result}"
     puts "received this data back Base64 decoded: #{Base64.decode64(result)}"
   end
+
+  def sendJS(jsString)
+    @remote_connection.cmd('/session_id')
+    session_id = @remote_connection.cmd('/session_id').split(/\s+/)[1]
+
+    puts "got session_id: #{session_id}"
+    src = jsString;
+    message_request = {:'session-id' => session_id, :id => 1, :type => 'eval_src', :src => src}
+    # titanium.cmd(Base64.encode64(message_request.to_json)) do |c|
+    # size += c.size
+    # puts "Read #{c.size} bytes; total #{size}"
+    # end
+    puts "sending following to running Titanium App on port 5061: #{message_request.to_json}\n"
+    result = @remote_connection.cmd("/message #{Base64.encode64(message_request.to_json)}").split(/\s+/)[1]
+    # puts "received this raw data back: #{result}"
+    puts "received this data back Base64 decoded: #{Base64.decode64(result)}"
+    return Base64.decode64(result)
+  end  
 end
