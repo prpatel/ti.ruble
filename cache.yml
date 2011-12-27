@@ -60,15 +60,15 @@ children:
     path: bundle.rb
     scope: null
   - children: *id001
-    commandName: Show commands
+    commandName: TEST REPL
     customProperties: null
-    displayName: Show commands
+    displayName: TEST REPL
     path: bundle.rb
     scope: null
   - children: *id001
-    commandName: Command 2
+    commandName: Show commands
     customProperties: null
-    displayName: Command 2
+    displayName: Show commands
     path: bundle.rb
     scope: null
   - children: *id001
@@ -97,11 +97,24 @@ children:
 - !!com.aptana.scripting.model.CommandElement
   async: false
   customProperties: null
-  displayName: TEST REPL
-  input: [selection, word]
+  displayName: Invoke REPL
+  input: []
   inputPath: null
   keyBindingMap:
     !!com.aptana.scripting.model.Platform 'ALL': [SHIFT+CTRL+A]
+  outputPath: null
+  outputType: undefined
+  path: commands/commands.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: TEST REPL
+  input: [selection, word]
+  inputPath: null
+  keyBindingMap: null
   outputPath: null
   outputType: show_as_tooltip
   path: commands/commands.rb
@@ -112,19 +125,6 @@ children:
   async: false
   customProperties: null
   displayName: Show commands
-  input: []
-  inputPath: null
-  keyBindingMap: null
-  outputPath: null
-  outputType: undefined
-  path: commands/commands.rb
-  runType: current_thread
-  scope: null
-  workingDirectoryType: UNDEFINED
-- !!com.aptana.scripting.model.CommandElement
-  async: false
-  customProperties: null
-  displayName: Invoke REPL
   input: []
   inputPath: null
   keyBindingMap: null

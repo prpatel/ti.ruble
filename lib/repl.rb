@@ -59,10 +59,10 @@ class Repl
     # size += c.size
     # puts "Read #{c.size} bytes; total #{size}"
     # end
-    puts "sending following to running Titanium App on port 5061: #{message_request.to_json}\n"
+    CONSOLE.puts "sending following to running Titanium App on port 5061: #{message_request.to_json}\n"
     result = @remote_connection.cmd("/message #{Base64.encode64(message_request.to_json)}").split(/\s+/)[1]
     # puts "received this raw data back: #{result}"
-    puts "received this data back Base64 decoded: #{Base64.decode64(result)}"
+    CONSOLE.puts "received this data back Base64 decoded: #{Base64.decode64(result)}"
     return Base64.decode64(result)
   end  
 end

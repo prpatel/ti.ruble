@@ -1,9 +1,26 @@
 require 'ruble'
 require 'repl'
 
+command "Invoke REPL" do |cmd|
+    cmd.key_binding = 'SHIFT+CTRL+A' # uncomment for a key binding
+    cmd.invoke do |context|
+      #Ruble::UI.alert(:info, 'Title', 'Message')
+      #result =  Ruble::UI.request_string()
+      require('multi_line_editor')
+      help_text = 'Enter in JavaScript to execute in the simulator/emulator'
+      selectedText = context.editor.selection
+      CONSOLE.puts selectedText
+      dialog = MultiInputDialog.new(org.eclipse.swt.widgets.Display.current.active_shell, 'Titanium REPL', help_text, selectedText.text, nil)
+      return_value = dialog.value if dialog.open == org.eclipse.jface.window.Window::OK
+      if return_value != ''
+        repl = Repl.new
+        repl.sendJS(return_value)
+        # CONSOLE.puts (return_value)
+      end
+  end
+end
 
 command 'TEST REPL' do |cmd|
-  cmd.key_binding = 'SHIFT+CTRL+A' # uncomment for a key binding
   cmd.scope = 'source'
   cmd.output = :show_as_tooltip
   cmd.input = :selection, :word
@@ -19,20 +36,6 @@ end
 command "Show commands" do |cmd|
   cmd.invoke do |context|
     CONSOLE.puts context.editor.document.public_methods(true).sort
-  end
-end
-
-command "Invoke REPL" do |cmd|
-    cmd.invoke do |context|
-    #Ruble::UI.alert(:info, 'Title', 'Message')
-    #result =  Ruble::UI.request_string()
-    require('multi_line_editor')
-    help_text = 'Enter in JavaScript to execute in the simulator/emulator'
-    dialog = MultiInputDialog.new(org.eclipse.swt.widgets.Display.current.active_shell, 'Titanium REPL', help_text, '', nil)
-    return_value = dialog.value if dialog.open == org.eclipse.jface.window.Window::OK
-    repl = Repl.new
-    repl.sendJS(return_value)
-    CONSOLE.puts (return_value)
   end
 end
 
