@@ -1,0 +1,127 @@
+!!com.aptana.scripting.model.BundleElement
+author: Pratik Patel
+children:
+- !!com.aptana.scripting.model.ProjectSampleElement
+  category: com.aptana.projects.samples.web.category
+  customProperties: null
+  description: A basic project sample
+  displayName: Project Sample Example
+  icon: {}
+  id: sample.local
+  location: samples/local_sample.zip
+  natures: [com.aptana.projects.webnature]
+  path: samples/project_samples.rb
+  scope: null
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  customProperties:
+    prefix_values: [sample]
+  displayName: Sample Snippet
+  expansion: sample_snippet
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets/snippets.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !template
+  async: false
+  customProperties: null
+  displayName: Sample File Template
+  filetype: '*.txt'
+  input: []
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: discard
+  path: templates/templates.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.ProjectTemplateElement
+  customProperties: {replace_parameters: true}
+  description: A basic template which includes only a default index.html file
+  displayName: Sample Project Template
+  icon: null
+  id: Sample Project Template
+  location: templates/sample_project_template.zip
+  path: templates/templates.rb
+  scope: null
+  type: WEB
+- !!com.aptana.scripting.model.MenuElement
+  children:
+  - children: &id001 []
+    commandName: Invoke REPL
+    customProperties: null
+    displayName: Invoke REPL
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Update/Insert selected code
+    customProperties: null
+    displayName: Update/Insert selected code
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: '-'
+    customProperties: null
+    displayName: '-'
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: Set
+      customProperties: null
+      displayName: Set
+      path: bundle.rb
+      scope: null
+    commandName: Configure ti.ruble
+    customProperties: null
+    displayName: Configure ti.ruble
+    path: bundle.rb
+    scope: null
+  commandName: ti.ruble
+  customProperties: null
+  displayName: ti.ruble
+  path: bundle.rb
+  scope: null
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Invoke REPL
+  input: [selection, word]
+  inputPath: null
+  keyBindingMap:
+    !!com.aptana.scripting.model.Platform 'ALL': [SHIFT+CTRL+A]
+  outputPath: null
+  outputType: show_as_tooltip
+  path: commands/commands.rb
+  runType: current_thread
+  scope: source
+  workingDirectoryType: UNDEFINED
+copyright: '(c) Copyright 2011 mypatelspace.com
+
+  Distributed under APL2 license.
+
+  '
+customProperties: null
+decreaseIndentMarkers: {}
+description: "This Ruble is to be used in Titanium Studio. The purpose of this Ruble\
+  \ is to \nmake developing Titanium Mobile applications faster. This package offers\
+  \ several functions:\n1) A REPL for a running Titanium iOS simulator or Android\
+  \ emulator.\n2) Dynamic code update or insertion\n3) Code completions and accelerators\
+  \ for a single-context Titanium Mobile project\n"
+displayName: ti.ruble
+fileTypeRegistry: {}
+fileTypes: []
+foldingStartMarkers: {}
+foldingStopMarkers: {}
+increaseIndentMarkers: {}
+license: null
+licenseUrl: null
+path: bundle.rb
+repository: git@github.com:prpatel/ti.ruble.git
+visible: true
