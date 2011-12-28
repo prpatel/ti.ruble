@@ -127,7 +127,8 @@ children:
   displayName: Show commands
   input: []
   inputPath: null
-  keyBindingMap: null
+  keyBindingMap:
+    !!com.aptana.scripting.model.Platform 'ALL': [SHIFT+CTRL+Z]
   outputPath: null
   outputType: undefined
   path: commands/commands.rb

@@ -1,6 +1,8 @@
 require 'ruble'
 require 'repl'
 
+@last_invoked_js = ''
+@repl = Repl.new
 command "Invoke REPL" do |cmd|
     cmd.key_binding = 'SHIFT+CTRL+A' # uncomment for a key binding
     cmd.invoke do |context|
@@ -13,8 +15,8 @@ command "Invoke REPL" do |cmd|
       dialog = MultiInputDialog.new(org.eclipse.swt.widgets.Display.current.active_shell, 'Titanium REPL', help_text, selectedText.text, nil)
       return_value = dialog.value if dialog.open == org.eclipse.jface.window.Window::OK
       if return_value != ''
-        repl = Repl.new
-        repl.sendJS(return_value)
+        @last_invoked_js = return_value
+        @repl.sendJS(return_value)
         # CONSOLE.puts (return_value)
       end
   end
@@ -26,7 +28,7 @@ command 'TEST REPL' do |cmd|
   cmd.input = :selection, :word
   cmd.invoke do |context|
     word = $stdin.gets
-    repl = Repl.new
+
     repl.sendJS('win2.backgroundColor = \'green\'')
    # context.exit_discard if word.nil? # exit if the selection is null
    # print word.swapcase
@@ -34,8 +36,16 @@ command 'TEST REPL' do |cmd|
 end
 
 command "Show commands" do |cmd|
-  cmd.invoke do |context|
-    CONSOLE.puts context.editor.document.public_methods(true).sort
+    cmd.key_binding = 'SHIFT+CTRL+Z' # uncomment for a key binding
+    cmd.invoke do |context|
+      #Ruble::UI.alert(:info, 'Title', 'Message')
+      #result =  Ruble::UI.request_string()
+      return_value = @last_invoked_js
+      CONSOLE.puts return_value
+      if return_value != ''
+        @repl.sendJS(return_value)
+        # CONSOLE.puts (return_value)
+      end
   end
 end
 

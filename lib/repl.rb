@@ -49,7 +49,13 @@ class Repl
   end
 
   def sendJS(jsString)
+   begin 
     @remote_connection.cmd('/session_id')
+   rescue SystemCallError
+     @remote_connection = Net::Telnet::new('Host' => 'localhost', 'Port' => 5061, 'Telnetmode' => true, 'Prompt' => /REPL> /)
+     @remote_connection.cmd('/session_id')
+   end 
+    
     session_id = @remote_connection.cmd('/session_id').split(/\s+/)[1]
 
     puts "got session_id: #{session_id}"
