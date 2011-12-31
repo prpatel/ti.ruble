@@ -60,15 +60,15 @@ children:
     path: bundle.rb
     scope: null
   - children: *id001
-    commandName: TEST REPL
+    commandName: Run Last
     customProperties: null
-    displayName: TEST REPL
+    displayName: Run Last
     path: bundle.rb
     scope: null
   - children: *id001
-    commandName: Show commands
+    commandName: TEST REPL
     customProperties: null
-    displayName: Show commands
+    displayName: TEST REPL
     path: bundle.rb
     scope: null
   - children: *id001
@@ -124,7 +124,7 @@ children:
 - !!com.aptana.scripting.model.CommandElement
   async: false
   customProperties: null
-  displayName: Show commands
+  displayName: Run Last
   input: []
   inputPath: null
   keyBindingMap:

@@ -23,8 +23,9 @@ bundle.repository = 'git@github.com:prpatel/ti.ruble.git'
   # to easily add new sections
   bundle.menu 'ti.ruble' do |menu|
     menu.command 'Invoke REPL'
+    menu.command 'Run Last'
     menu.command 'TEST REPL'
-    menu.command 'Show commands'
+    
     menu.separator
     menu.menu 'Configure ti.ruble' do |sub_menu|
         sub_menu.command 'Set'

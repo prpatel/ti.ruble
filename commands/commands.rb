@@ -16,7 +16,7 @@ command "Invoke REPL" do |cmd|
       return_value = dialog.value if dialog.open == org.eclipse.jface.window.Window::OK
       if return_value != ''
         @last_invoked_js = return_value
-        @repl.sendJS(return_value)
+        context.exit_show_tool_tip('Result: ' + @repl.sendJS(return_value))
         # CONSOLE.puts (return_value)
       end
   end
@@ -35,7 +35,7 @@ command 'TEST REPL' do |cmd|
   end
 end
 
-command "Show commands" do |cmd|
+command "Run Last" do |cmd|
     cmd.key_binding = 'SHIFT+CTRL+Z' # uncomment for a key binding
     cmd.invoke do |context|
       #Ruble::UI.alert(:info, 'Title', 'Message')
@@ -43,8 +43,10 @@ command "Show commands" do |cmd|
       return_value = @last_invoked_js
       CONSOLE.puts return_value
       if return_value != ''
-        @repl.sendJS(return_value)
+        context.exit_show_tool_tip('Result: ' + @repl.sendJS(return_value))
         # CONSOLE.puts (return_value)
+      else
+        context.exit_show_tool_tip('No last REPL command to run')
       end
   end
 end
